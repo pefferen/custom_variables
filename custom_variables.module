@@ -1,0 +1,27 @@
+<?php
+/**
+ * Implements hook_menu()
+ * @return array menu's
+ */
+function custom_variables_menu() {
+  $menus['admin/config/custom_variables'] = array(
+    'title' => 'Custom Variables Settings',
+    'page callback' => 'drupal_get_form',
+    // 'page arguments' => array('custom_variables_admin_settings'),
+    'page arguments' => array('variable_module_form', 'custom_variables'),
+    'access callback' => 'user_access',
+    'access arguments' => array('access administration menu'),
+  );
+  return $menus;
+}
+
+function custom_variables_admin_settings($form, &$form_state){
+  $form = drupal_get_form('variable_module_form', 'custom_variables');
+  $form['site_information'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Site details'),
+  );
+  kpr(get_defined_vars());
+  return system_settings_form($form);
+}
+

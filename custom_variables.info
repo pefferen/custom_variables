@@ -1,0 +1,7 @@
+name = Custom variables
+description = Exercise module to discover how variables work
+package = custom
+core = 7.x
+configure = admin/config/custom_variables
+tags[] = developer
+;files[] =
